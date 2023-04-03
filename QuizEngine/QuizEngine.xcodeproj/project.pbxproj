@@ -10,6 +10,7 @@
 		B55C91BF29DB2DBA0088AACA /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55C91B629DB2DBA0088AACA /* QuizEngine.framework */; };
 		B55C91CF29DB31430088AACA /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91CE29DB31430088AACA /* FlowTests.swift */; };
 		B55C91D129DB32430088AACA /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91D029DB32430088AACA /* Flow.swift */; };
+		B55C91D429DB69FC0088AACA /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91D329DB69FC0088AACA /* XCTestCase+MemoryLeakTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +28,7 @@
 		B55C91BE29DB2DBA0088AACA /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55C91CE29DB31430088AACA /* FlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTests.swift; sourceTree = "<group>"; };
 		B55C91D029DB32430088AACA /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
+		B55C91D329DB69FC0088AACA /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +79,18 @@
 		B55C91C229DB2DBA0088AACA /* QuizEngineTests */ = {
 			isa = PBXGroup;
 			children = (
+				B55C91D229DB69C10088AACA /* Helpers */,
 				B55C91CE29DB31430088AACA /* FlowTests.swift */,
 			);
 			path = QuizEngineTests;
+			sourceTree = "<group>";
+		};
+		B55C91D229DB69C10088AACA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B55C91D329DB69FC0088AACA /* XCTestCase+MemoryLeakTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B55C91CF29DB31430088AACA /* FlowTests.swift in Sources */,
+				B55C91D429DB69FC0088AACA /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,8 +11,7 @@ import QuizEngine
 final class FlowTests: XCTestCase {
 
     func test_start_withNoQuestion_doesNotRouteToQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: [],router: router)
+        let (sut, router) = makeSUT()
         
         sut.start()
         
@@ -20,8 +19,7 @@ final class FlowTests: XCTestCase {
     }
     
     func test_start_withOneQuestion_routesToCorrectQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q2"],router: router)
+        let (sut, router) = makeSUT(questions: ["Q2"])
 
         sut.start()
 
@@ -29,8 +27,7 @@ final class FlowTests: XCTestCase {
     }
     
     func test_start_withTwoQuestions_routesToFirstQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1","Q2"],router: router)
+        let (sut, router) = makeSUT(questions: ["Q1","Q2"])
 
         sut.start()
 
@@ -38,8 +35,7 @@ final class FlowTests: XCTestCase {
     }
     
     func test_startTwice_withTwoQuestions_routesToFirstQuestionTwice() {
-        let router = RouterSpy()
-        let sut = Flow(questions: ["Q1","Q2"],router: router)
+        let (sut, router) = makeSUT(questions: ["Q1","Q2"])
         
         sut.start()
         sut.start()
@@ -49,6 +45,18 @@ final class FlowTests: XCTestCase {
 
     
     //MARK: - Helper
+    
+    private func makeSUT(
+        questions: [String] = [],
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> (sut: Flow,router: RouterSpy) {
+        let router = RouterSpy()
+        let sut = Flow(questions: questions,router: router)
+        trackForMemoryLeaks(router,file: file,line: line)
+        trackForMemoryLeaks(sut,file: file,line: line)
+        return (sut,router)
+    }
     
     private class RouterSpy: Router {
         var routedQuestions = [String]()
