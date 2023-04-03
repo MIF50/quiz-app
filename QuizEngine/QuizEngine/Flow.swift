@@ -11,9 +11,11 @@ public protocol Router {}
 
 public class Flow {
     
+    private let questions: [String]
     private let router: Router
     
-    public init(router: Router) {
+    public init(questions: [String], router: Router) {
+        self.questions = questions
         self.router = router
     }
     
