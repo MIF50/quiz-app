@@ -23,7 +23,7 @@ public class Flow {
     
     public func start() {
         if !questions.isEmpty {
-            router.routeTo(question: "")
+            router.routeTo(question: questions.first!)
         }
     }
 }
