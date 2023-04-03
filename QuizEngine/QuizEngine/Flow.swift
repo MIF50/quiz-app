@@ -7,7 +7,9 @@
 
 import Foundation
 
-public protocol Router {}
+public protocol Router {
+    func routeTo(question: String)
+}
 
 public class Flow {
     
@@ -20,6 +22,8 @@ public class Flow {
     }
     
     public func start() {
-        
+        if !questions.isEmpty {
+            router.routeTo(question: "")
+        }
     }
 }
