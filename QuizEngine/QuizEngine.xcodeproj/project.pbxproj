@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B55C91BF29DB2DBA0088AACA /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55C91B629DB2DBA0088AACA /* QuizEngine.framework */; };
+		B55C91CF29DB31430088AACA /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91CE29DB31430088AACA /* FlowTests.swift */; };
+		B55C91D129DB32430088AACA /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91D029DB32430088AACA /* Flow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		B55C91B629DB2DBA0088AACA /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55C91BE29DB2DBA0088AACA /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B55C91CE29DB31430088AACA /* FlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTests.swift; sourceTree = "<group>"; };
+		B55C91D029DB32430088AACA /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 		B55C91B829DB2DBA0088AACA /* QuizEngine */ = {
 			isa = PBXGroup;
 			children = (
+				B55C91D029DB32430088AACA /* Flow.swift */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -72,6 +77,7 @@
 		B55C91C229DB2DBA0088AACA /* QuizEngineTests */ = {
 			isa = PBXGroup;
 			children = (
+				B55C91CE29DB31430088AACA /* FlowTests.swift */,
 			);
 			path = QuizEngineTests;
 			sourceTree = "<group>";
@@ -137,9 +143,11 @@
 				TargetAttributes = {
 					B55C91B529DB2DBA0088AACA = {
 						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
 					};
 					B55C91BD29DB2DBA0088AACA = {
 						CreatedOnToolsVersion = 14.3;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -184,6 +192,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55C91D129DB32430088AACA /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B55C91CF29DB31430088AACA /* FlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +337,7 @@
 		B55C91C929DB2DBA0088AACA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -351,6 +362,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -358,6 +370,7 @@
 		B55C91CA29DB2DBA0088AACA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -389,6 +402,8 @@
 		B55C91CC29DB2DBA0088AACA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GK4GDX3M3T;
@@ -397,6 +412,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mif50.QuizEngineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -404,6 +420,8 @@
 		B55C91CD29DB2DBA0088AACA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = GK4GDX3M3T;
