@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol Router {
-    func routeTo(question: String)
+    func routeTo(question: String,answerCallback: @escaping ((String) -> Void))
 }
 
 public class Flow {
@@ -23,7 +23,13 @@ public class Flow {
     
     public func start() {
         if let firstQuestion = questions.first {
-            router.routeTo(question: firstQuestion)
+            router.routeTo(question: firstQuestion) { [weak self] _ in
+                guard let self else { return }
+                
+                let firstIndexQuestoin = questions.firstIndex(of: firstQuestion)!
+                let nextQuestion = questions[firstIndexQuestoin + 1]
+                router.routeTo(question: nextQuestion) { _ in }
+            }
         }
     }
 }
