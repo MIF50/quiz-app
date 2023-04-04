@@ -9,6 +9,8 @@ import UIKit
 
 public final class QuestionViewController: UIViewController {
     
+    private let reuseIdentifier = "Cell"
+    
     //MARK: - Outlets
     
     @IBOutlet public private(set) var headerLabel: UILabel!
@@ -37,9 +39,17 @@ extension QuestionViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = dequeueCell(in: tableView)
         let model = options[indexPath.row]
         cell.textLabel?.text = model
         return cell
+    }
+    
+    private func dequeueCell(in tableView: UITableView) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) {
+            return cell
+        }
+        
+        return UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
     }
 }
