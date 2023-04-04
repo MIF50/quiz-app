@@ -39,6 +39,8 @@ public class Flow {
                 if currentQuestionIndex + 1 < questions.count {
                     let nextQuestion = questions[currentQuestionIndex + 1]
                     router.routeTo(question: nextQuestion,answerCallback: routeNext(nextQuestion))
+                } else {
+                    router.routeTo(result: ["Q1": "A1"])
                 }
             }
         }
