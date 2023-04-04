@@ -16,7 +16,7 @@ public final class QuestionViewController: UIViewController {
     @IBOutlet public private(set) var headerLabel: UILabel!
     @IBOutlet public private(set) var tableView: UITableView!
     
-    private var question: String = ""
+    private var question = ""
     private var options = [String]()
     
     public convenience init(question: String,options: [String]) {
