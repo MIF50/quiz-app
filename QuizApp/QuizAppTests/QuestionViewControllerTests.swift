@@ -43,6 +43,14 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.tableView.dataSource,"dataSource")
     }
     
+    func test_viewDidLoad_withOneOption_rendersOneOption() {
+        let sut = makeSUT(options: ["A1"])
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.numberOfOptions, 1)
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(question: String = "",options: [String] = []) -> QuestionViewController {
