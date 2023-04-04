@@ -11,7 +11,7 @@ import QuizApp
 final class QuestionViewControllerTests: XCTestCase {
     
     func test_outlets_shouldBeConnected() {
-        let sut = QuestionViewController(question: "")
+        let sut = makeSUT()
         
         sut.loadViewIfNeeded()
         
@@ -19,12 +19,20 @@ final class QuestionViewControllerTests: XCTestCase {
     }
     
     func test_viewDidLoad_hasHeaderText() {
-        let sut = QuestionViewController(question: "Q1")
+        let sut = makeSUT(question: "Q1")
         
         sut.loadViewIfNeeded()
         
         XCTAssertEqual(sut.textHeaderLabel, "Q1")
     }
+    
+    //MARK: - Helpers
+    
+    private func makeSUT(question: String = "") -> QuestionViewController {
+        let sut = QuestionViewController(question: question)
+        return sut
+    }
+
 }
 
 private extension QuestionViewController {
