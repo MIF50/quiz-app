@@ -32,10 +32,11 @@ public class Flow {
         return { [weak self] _ in
             guard let self else { return }
             
-            let currentQuestionIndex = questions.firstIndex(of: question)!
-            if currentQuestionIndex + 1 < questions.count {
-                let nextQuestion = questions[currentQuestionIndex + 1]
-                router.routeTo(question: nextQuestion,answerCallback: routeNext(nextQuestion))
+            if let currentQuestionIndex = questions.firstIndex(of: question) {
+                if currentQuestionIndex + 1 < questions.count {
+                    let nextQuestion = questions[currentQuestionIndex + 1]
+                    router.routeTo(question: nextQuestion,answerCallback: routeNext(nextQuestion))
+                }
             }
         }
     }
