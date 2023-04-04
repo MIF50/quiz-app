@@ -62,8 +62,7 @@ private extension QuestionViewController {
     }
     
     func optionView(at row: Int) -> UITableViewCell? {
-        let index = IndexPath(row: row, section: optionsSection)
-        return tableView.dataSource?.tableView(tableView, cellForRowAt: index)
+        tableView.cell(at: row,section: optionsSection)
     }
     
     func title(at row: Int) -> String? {
@@ -76,6 +75,14 @@ private extension QuestionViewController {
     
     private var optionsSection: Int {
         0
+    }
+}
+
+private extension UITableView {
+    
+    func cell(at row: Int, section: Int = 0) -> UITableViewCell? {
+        let index = IndexPath(row: row, section: section)
+        return dataSource?.tableView(self, cellForRowAt: index)
     }
 }
 
