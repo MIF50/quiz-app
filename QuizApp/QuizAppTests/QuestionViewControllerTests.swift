@@ -35,12 +35,14 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(makeSUT(options: ["A1","A2"]).numberOfOptions, 2)
     }
     
-    func test_viewDidLoad_withOneOption_rendersOneOptionText() {
-        let sut = makeSUT(options: ["A1"])
+    func test_viewDidLoad_rendersOptionsText() {
+        let sut = makeSUT(options: ["A1","A2"])
         
-        let cell = sut.optionView(at: 0)
+        let title0 = sut.title(at: 0)
+        XCTAssertEqual(title0,"A1")
         
-        XCTAssertEqual(cell?.textLabel?.text,"A1")
+        let title1 = sut.title(at: 1)
+        XCTAssertEqual(title1,"A2")
     }
     
     //MARK: - Helpers
@@ -62,6 +64,10 @@ private extension QuestionViewController {
     func optionView(at row: Int) -> UITableViewCell? {
         let index = IndexPath(row: row, section: optionsSection)
         return tableView.dataSource?.tableView(tableView, cellForRowAt: index)
+    }
+    
+    func title(at row: Int) -> String? {
+        optionView(at: row)?.textLabel?.text
     }
     
     var numberOfOptions: Int {
