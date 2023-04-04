@@ -37,6 +37,9 @@ extension QuestionViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let cell = UITableViewCell()
+        let model = options[indexPath.row]
+        cell.textLabel?.text = model
+        return cell
     }
 }

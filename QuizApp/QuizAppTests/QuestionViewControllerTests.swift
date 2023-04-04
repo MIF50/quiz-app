@@ -51,6 +51,15 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.numberOfOptions, 1)
     }
     
+    func test_viewDidLoad_withOneOption_rendersOneOptionText() {
+        let sut = makeSUT(options: ["A1"])
+        sut.loadViewIfNeeded()
+        
+        let cell = sut.optionView(at: 0)
+        
+        XCTAssertEqual(cell?.textLabel?.text,"A1")
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(question: String = "",options: [String] = []) -> QuestionViewController {
@@ -64,6 +73,11 @@ private extension QuestionViewController {
     
     var textHeaderLabel: String? {
         headerLabel.text
+    }
+    
+    func optionView(at row: Int) -> UITableViewCell? {
+        let index = IndexPath(row: row, section: optionsSection)
+        return tableView.dataSource?.tableView(tableView, cellForRowAt: index)
     }
     
     var numberOfOptions: Int {
