@@ -13,7 +13,6 @@ public final class QuestionViewController: UIViewController {
     
     @IBOutlet public private(set) var headerLabel: UILabel!
     @IBOutlet public private(set) var tableView: UITableView!
-
     
     private var question: String = ""
     private var options = [String]()

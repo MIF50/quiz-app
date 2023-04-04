@@ -27,6 +27,14 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.textHeaderLabel, "Q1")
     }
     
+    func test_viewDidLoad_withNoOptions_rendersZeroOptions() {
+        let sut = makeSUT(options: [])
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.numberOfOptions, 0)
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(question: String = "",options: [String] = []) -> QuestionViewController {
@@ -40,6 +48,14 @@ private extension QuestionViewController {
     
     var textHeaderLabel: String? {
         headerLabel.text
+    }
+    
+    var numberOfOptions: Int {
+        tableView.numberOfRows(inSection: optionsSection)
+    }
+    
+    private var optionsSection: Int {
+        0
     }
 }
 
