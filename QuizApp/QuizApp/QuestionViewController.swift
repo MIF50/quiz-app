@@ -12,13 +12,16 @@ public final class QuestionViewController: UIViewController {
     //MARK: - Outlets
     
     @IBOutlet public private(set) var headerLabel: UILabel!
+    @IBOutlet public private(set) var tableView: UITableView!
 
     
     private var question: String = ""
+    private var options = [String]()
     
-    public convenience init(question: String) {
+    public convenience init(question: String,options: [String]) {
         self.init()
         self.question = question
+        self.options = options
     }
     
     public override func viewDidLoad() {

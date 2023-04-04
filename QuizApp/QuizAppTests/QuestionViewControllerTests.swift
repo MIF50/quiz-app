@@ -16,6 +16,7 @@ final class QuestionViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
         
         XCTAssertNotNil(sut.headerLabel, "headerLabel")
+        XCTAssertNotNil(sut.tableView,"tableView")
     }
     
     func test_viewDidLoad_hasHeaderText() {
@@ -28,8 +29,8 @@ final class QuestionViewControllerTests: XCTestCase {
     
     //MARK: - Helpers
     
-    private func makeSUT(question: String = "") -> QuestionViewController {
-        let sut = QuestionViewController(question: question)
+    private func makeSUT(question: String = "",options: [String] = []) -> QuestionViewController {
+        let sut = QuestionViewController(question: question,options: options)
         return sut
     }
 
