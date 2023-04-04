@@ -15,6 +15,8 @@ public protocol Router {
 
 public class Flow {
     
+    private var result: [String: String] = [:]
+    
     private let questions: [String]
     private let router: Router
     
@@ -27,20 +29,22 @@ public class Flow {
         if let firstQuestion = questions.first {
             router.routeTo(question: firstQuestion,answerCallback: routeNext(firstQuestion))
         } else {
-            router.routeTo(result: [:])
+            router.routeTo(result: result)
         }
     }
     
     private func routeNext(_ question: String) -> Router.AnswerCallback {
-        return { [weak self] _ in
+        return { [weak self] answer in
             guard let self else { return }
-            
+
             if let currentQuestionIndex = questions.firstIndex(of: question) {
+                result[question] = answer
+
                 if currentQuestionIndex + 1 < questions.count {
                     let nextQuestion = questions[currentQuestionIndex + 1]
                     router.routeTo(question: nextQuestion,answerCallback: routeNext(nextQuestion))
                 } else {
-                    router.routeTo(result: ["Q1": "A1"])
+                    router.routeTo(result: result)
                 }
             }
         }
