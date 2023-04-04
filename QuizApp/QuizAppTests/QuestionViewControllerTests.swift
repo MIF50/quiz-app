@@ -35,6 +35,14 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.numberOfOptions, 0)
     }
     
+    func test_tableView_delegate_shouldBeConnected() {
+        let sut = makeSUT()
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertNotNil(sut.tableView.dataSource,"dataSource")
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(question: String = "",options: [String] = []) -> QuestionViewController {

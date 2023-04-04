@@ -29,3 +29,14 @@ public final class QuestionViewController: UIViewController {
         headerLabel.text = question
     }
 }
+
+extension QuestionViewController: UITableViewDataSource {
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        0
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        UITableViewCell()
+    }
+}
