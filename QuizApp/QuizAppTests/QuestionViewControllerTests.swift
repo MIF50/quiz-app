@@ -23,22 +23,16 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.textHeaderLabel, "Q1")
     }
     
-    func test_viewDidLoad_withNoOptions_rendersZeroOptions() {
-        let sut = makeSUT(options: [])
-        
-        XCTAssertEqual(sut.numberOfOptions, 0)
-    }
-    
     func test_tableView_delegate_shouldBeConnected() {
         let sut = makeSUT()
         
         XCTAssertNotNil(sut.tableView.dataSource,"dataSource")
     }
     
-    func test_viewDidLoad_withOneOption_rendersOneOption() {
-        let sut = makeSUT(options: ["A1"])
-        
-        XCTAssertEqual(sut.numberOfOptions, 1)
+    func test_viewDidLoad_rendersOptions() {
+        XCTAssertEqual(makeSUT(options: []).numberOfOptions, 0)
+        XCTAssertEqual(makeSUT(options: ["A1"]).numberOfOptions, 1)
+        XCTAssertEqual(makeSUT(options: ["A1","A2"]).numberOfOptions, 2)
     }
     
     func test_viewDidLoad_withOneOption_rendersOneOptionText() {
