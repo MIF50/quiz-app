@@ -12,10 +12,25 @@ final class QuestionViewControllerTests: XCTestCase {
     
     func test_outlets_shouldBeConnected() {
         let sut = QuestionViewController(question: "")
-        sut.loadView()
+        
+        sut.loadViewIfNeeded()
         
         XCTAssertNotNil(sut.headerLabel, "headerLabel")
     }
+    
+    func test_viewDidLoad_hasHeaderText() {
+        let sut = QuestionViewController(question: "Q1")
+        
+        sut.loadViewIfNeeded()
+        
+        XCTAssertEqual(sut.textHeaderLabel, "Q1")
+    }
+}
 
+private extension QuestionViewController {
+    
+    var textHeaderLabel: String? {
+        headerLabel.text
+    }
 }
 

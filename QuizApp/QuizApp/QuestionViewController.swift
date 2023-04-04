@@ -20,4 +20,10 @@ public final class QuestionViewController: UIViewController {
         self.init()
         self.question = question
     }
+    
+    public override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        headerLabel.text = question
+    }
 }
