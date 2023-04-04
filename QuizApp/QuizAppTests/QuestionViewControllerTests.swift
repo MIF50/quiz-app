@@ -27,6 +27,7 @@ final class QuestionViewControllerTests: XCTestCase {
         let sut = makeSUT()
         
         XCTAssertNotNil(sut.tableView.dataSource,"dataSource")
+        XCTAssertNotNil(sut.tableView.delegate,"delegate")
     }
     
     func test_viewDidLoad_rendersOptions() {
