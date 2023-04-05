@@ -47,16 +47,14 @@ final class QuestionViewControllerTests: XCTestCase {
     }
     
     func test_optionSelected_notifiesSelection() {
-        var receivedAnswer = ""
-        let sut = makeSUT(options: ["A1","A2"]) { answer in
-            receivedAnswer = answer
-        }
+        var receivedAnswer = [String]()
+        let sut = makeSUT(options: ["A1","A2"]) { receivedAnswer = $0 }
         
         sut.simuateOptionSelection(at: 0)
-        XCTAssertEqual(receivedAnswer, "A1")
+        XCTAssertEqual(receivedAnswer, ["A1"])
         
         sut.simuateOptionSelection(at: 1)
-        XCTAssertEqual(receivedAnswer, "A2")
+        XCTAssertEqual(receivedAnswer, ["A2"])
     }
     
     //MARK: - Helpers
@@ -64,7 +62,7 @@ final class QuestionViewControllerTests: XCTestCase {
     private func makeSUT(
         question: String = "",
         options: [String] = [],
-        selection: @escaping (String) -> Void = { _ in }
+        selection: @escaping ([String]) -> Void = { _ in }
     ) -> QuestionViewController {
         let sut = QuestionViewController(question: question,options: options,selection: selection)
         sut.loadViewIfNeeded()
