@@ -16,13 +16,26 @@ final class ResultsViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.headerLabel,"headerLabel")
     }
     
+    func test_viewDidLoad_hasSummary() {
+        let sut = makeSUT(summary: "a summary")
+        
+        XCTAssertEqual(sut.textHeader, "a summary")
+    }
+    
     //MARK: - Helpers
     
-    private func makeSUT() -> ResultsViewController {
-        let sut = ResultsViewController()
+    private func makeSUT(summary: String = "") -> ResultsViewController {
+        let sut = ResultsViewController(summary: summary)
         sut.loadViewIfNeeded()
         return sut
     }
 
+}
+
+private extension ResultsViewController {
+    
+    var textHeader: String? {
+        headerLabel.text
+    }
 }
 

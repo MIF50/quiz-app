@@ -12,10 +12,18 @@ public final class ResultsViewController: UIViewController {
     //MARK: - Outlets
     
     @IBOutlet public private(set) var headerLabel: UILabel!
+    
+    private var summary = ""
+    
+    public convenience init(summary: String) {
+        self.init()
+        self.summary = summary
+    }
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        headerLabel.text = summary
     }
 
 }
