@@ -48,13 +48,15 @@ final class QuestionViewControllerTests: XCTestCase {
     
     func test_optionSelected_notifiesSelection() {
         var receivedAnswer = ""
-        let sut = makeSUT(options: ["A1"]) { answer in
+        let sut = makeSUT(options: ["A1","A2"]) { answer in
             receivedAnswer = answer
         }
         
         sut.simuateOptionSelection(at: 0)
-        
         XCTAssertEqual(receivedAnswer, "A1")
+        
+        sut.simuateOptionSelection(at: 1)
+        XCTAssertEqual(receivedAnswer, "A2")
     }
     
     //MARK: - Helpers
