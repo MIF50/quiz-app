@@ -89,13 +89,3 @@ private extension ResultsViewController {
         0
     }
 }
-
-private extension UITableView {
-    
-    func cell(at row: Int, section: Int = 0) -> UITableViewCell? {
-        let index = IndexPath(row: row, section: section)
-        return dataSource?.tableView(self, cellForRowAt: index)
-    }
-}
-
-
