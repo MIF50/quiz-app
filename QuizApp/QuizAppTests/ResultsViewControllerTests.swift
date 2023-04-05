@@ -35,6 +35,12 @@ final class ResultsViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut.tableView.dataSource,"dataSource")
     }
     
+    func test_viewDidLoad_withOneAnswer_rendersAnswer() {
+        let sut = makeSUT(answers: ["A1"])
+
+        XCTAssertEqual(sut.numberOfAnswers, 1)
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(
