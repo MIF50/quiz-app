@@ -23,10 +23,19 @@ final class ResultsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.textHeader, "a summary")
     }
     
+    func test_viewDidLoad_withoutAnswers_doestNotRenderAnswers() {
+        let sut = makeSUT(answers: [])
+        
+        XCTAssertEqual(sut.numberOfAnswers, 0)
+    }
+    
     //MARK: - Helpers
     
-    private func makeSUT(summary: String = "") -> ResultsViewController {
-        let sut = ResultsViewController(summary: summary)
+    private func makeSUT(
+        summary: String = "",
+        answers: [String] = []
+    ) -> ResultsViewController {
+        let sut = ResultsViewController(summary: summary,answers: answers)
         sut.loadViewIfNeeded()
         return sut
     }
@@ -37,6 +46,14 @@ private extension ResultsViewController {
     
     var textHeader: String? {
         headerLabel.text
+    }
+    
+    var numberOfAnswers: Int {
+        tableView.numberOfRows(inSection: answerSection)
+    }
+    
+    private var answerSection: Int {
+        0
     }
 }
 

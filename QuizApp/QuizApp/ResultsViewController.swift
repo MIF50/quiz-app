@@ -15,10 +15,12 @@ public final class ResultsViewController: UIViewController {
     @IBOutlet public private(set) var tableView: UITableView!
     
     private var summary = ""
+    private var answers = [String]()
     
-    public convenience init(summary: String) {
+    public convenience init(summary: String,answers: [String]) {
         self.init()
         self.summary = summary
+        self.answers = answers
     }
 
     public override func viewDidLoad() {
