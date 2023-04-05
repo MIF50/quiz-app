@@ -29,6 +29,12 @@ final class ResultsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.numberOfAnswers, 0)
     }
     
+    func test_tableView_delegate_shouldBeConnected() {
+        let sut = makeSUT()
+        
+        XCTAssertNotNil(sut.tableView.dataSource,"dataSource")
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(
