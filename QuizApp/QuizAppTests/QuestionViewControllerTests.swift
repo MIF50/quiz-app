@@ -57,6 +57,18 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(receivedAnswer, ["A2"])
     }
     
+    func test_optionSelected_withEnabledMultipleSelection_notifiesSelection() {
+        var receivedAnswer = [String]()
+        let sut = makeSUT(options: ["A1","A2"]) { receivedAnswer = $0 }
+        sut.enableMultipleSelection()
+        
+        sut.simuateOptionSelection(at: 0)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        
+        sut.simuateOptionSelection(at: 1)
+        XCTAssertEqual(receivedAnswer, ["A1","A2"])
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(
@@ -75,6 +87,10 @@ private extension QuestionViewController {
     
     var textHeaderLabel: String? {
         headerLabel.text
+    }
+    
+    func enableMultipleSelection() {
+        tableView.allowsMultipleSelection = true
     }
     
     func simuateOptionSelection(at row: Int) {
@@ -107,6 +123,7 @@ private extension UITableView {
     
     func didSelect(at row: Int,section: Int = 0) {
         let index = IndexPath(row: row, section: section)
+        selectRow(at: index, animated: false, scrollPosition: .none)
         delegate?.tableView?(self, didSelectRowAt: index)
     }
 }
