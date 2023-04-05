@@ -7,6 +7,18 @@
 
 import UIKit
 
+public struct PresentableAnswer {
+    public let isCorrect: Bool
+    
+    public init(isCorrect: Bool) {
+        self.isCorrect = isCorrect
+    }
+}
+
+public class CorrectAnswerCell: UITableViewCell {
+    
+}
+
 public final class ResultsViewController: UIViewController {
     
     //MARK: - Outlets
@@ -15,9 +27,9 @@ public final class ResultsViewController: UIViewController {
     @IBOutlet public private(set) var tableView: UITableView!
     
     private var summary = ""
-    private var answers = [String]()
+    private var answers = [PresentableAnswer]()
     
-    public convenience init(summary: String,answers: [String]) {
+    public convenience init(summary: String,answers: [PresentableAnswer]) {
         self.init()
         self.summary = summary
         self.answers = answers
@@ -38,6 +50,6 @@ extension ResultsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        CorrectAnswerCell()
     }
 }

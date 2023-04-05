@@ -35,19 +35,27 @@ final class ResultsViewControllerTests: XCTestCase {
         XCTAssertEqual(makeSUT(answers: [anyAnswer,anyAnswer]).numberOfAnswers, 2)
     }
     
+    func test_viewDidLoad_withCorrectAnswer_rendersCorrectAnswerCell() {
+        let sut = makeSUT(answers: [.init(isCorrect: true)])
+        
+        let cell = sut.correctAnswerView(at: 0)
+        
+        XCTAssertNotNil(cell)
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(
         summary: String = "",
-        answers: [String] = []
+        answers: [PresentableAnswer] = []
     ) -> ResultsViewController {
         let sut = ResultsViewController(summary: summary,answers: answers)
         sut.loadViewIfNeeded()
         return sut
     }
     
-    var anyAnswer: String {
-        "any answer"
+    var anyAnswer: PresentableAnswer {
+        .init(isCorrect: false)
     }
 }
 
@@ -55,6 +63,10 @@ private extension ResultsViewController {
     
     var textHeader: String? {
         headerLabel.text
+    }
+    
+    func correctAnswerView(at row: Int) -> CorrectAnswerCell? {
+        return tableView.cell(at: 0,section: answerSection) as? CorrectAnswerCell
     }
     
     var numberOfAnswers: Int {
@@ -65,4 +77,13 @@ private extension ResultsViewController {
         0
     }
 }
+
+private extension UITableView {
+    
+    func cell(at row: Int, section: Int = 0) -> UITableViewCell? {
+        let index = IndexPath(row: row, section: section)
+        return dataSource?.tableView(self, cellForRowAt: index)
+    }
+}
+
 
