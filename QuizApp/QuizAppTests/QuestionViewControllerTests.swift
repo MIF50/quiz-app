@@ -46,7 +46,7 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(title1,"A2")
     }
     
-    func test_optionSelected_notifiesSelection() {
+    func test_optionSelected_withSingleSelection_notifiesSelection() {
         var receivedAnswer = [String]()
         let sut = makeSUT(options: ["A1","A2"]) { receivedAnswer = $0 }
         
@@ -55,6 +55,17 @@ final class QuestionViewControllerTests: XCTestCase {
         
         sut.simuateOptionSelect(at: 1)
         XCTAssertEqual(receivedAnswer, ["A2"])
+    }
+    
+    func test_optionDeselected_withSingleSelection_doesNotNotifySelection() {
+        var selectionCallCount = 0
+        let sut = makeSUT(options: ["A1","A2"]) { _ in selectionCallCount += 1 }
+        
+        sut.simuateOptionSelect(at: 0)
+        XCTAssertEqual(selectionCallCount, 1)
+
+        sut.simuateOptionDeselect(at: 0)
+        XCTAssertEqual(selectionCallCount, 1)
     }
     
     func test_optionSelected_withEnabledMultipleSelection_notifiesSelection() {
