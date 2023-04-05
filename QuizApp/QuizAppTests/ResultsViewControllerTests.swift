@@ -14,6 +14,7 @@ final class ResultsViewControllerTests: XCTestCase {
         let sut = makeSUT()
         
         XCTAssertNotNil(sut.headerLabel,"headerLabel")
+        XCTAssertNotNil(sut.tableView,"tableView")
     }
     
     func test_viewDidLoad_hasSummary() {

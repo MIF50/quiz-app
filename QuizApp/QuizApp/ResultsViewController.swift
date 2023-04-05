@@ -12,6 +12,7 @@ public final class ResultsViewController: UIViewController {
     //MARK: - Outlets
     
     @IBOutlet public private(set) var headerLabel: UILabel!
+    @IBOutlet public private(set) var tableView: UITableView!
     
     private var summary = ""
     
