@@ -18,11 +18,17 @@ public final class QuestionViewController: UIViewController {
     
     private var question = ""
     private var options = [String]()
+    private var selection: ((String) -> Void)? = nil
     
-    public convenience init(question: String,options: [String]) {
+    public convenience init(
+        question: String,
+        options: [String],
+        selection: @escaping (String) -> Void
+    ) {
         self.init()
         self.question = question
         self.options = options
+        self.selection = selection
     }
     
     public override func viewDidLoad() {
@@ -51,5 +57,12 @@ extension QuestionViewController: UITableViewDataSource {
         }
         
         return UITableViewCell(style: .default, reuseIdentifier: reuseIdentifier)
+    }
+}
+
+extension QuestionViewController: UITableViewDelegate {
+    
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selection?(options[indexPath.row])
     }
 }

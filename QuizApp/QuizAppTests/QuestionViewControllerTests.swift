@@ -46,10 +46,25 @@ final class QuestionViewControllerTests: XCTestCase {
         XCTAssertEqual(title1,"A2")
     }
     
+    func test_optionSelected_notifiesSelection() {
+        var receivedAnswer = ""
+        let sut = makeSUT(options: ["A1"]) { answer in
+            receivedAnswer = answer
+        }
+        
+        sut.simuateOptionSelection(at: 0)
+        
+        XCTAssertEqual(receivedAnswer, "A1")
+    }
+    
     //MARK: - Helpers
     
-    private func makeSUT(question: String = "",options: [String] = []) -> QuestionViewController {
-        let sut = QuestionViewController(question: question,options: options)
+    private func makeSUT(
+        question: String = "",
+        options: [String] = [],
+        selection: @escaping (String) -> Void = { _ in }
+    ) -> QuestionViewController {
+        let sut = QuestionViewController(question: question,options: options,selection: selection)
         sut.loadViewIfNeeded()
         return sut
     }
@@ -60,6 +75,10 @@ private extension QuestionViewController {
     
     var textHeaderLabel: String? {
         headerLabel.text
+    }
+    
+    func simuateOptionSelection(at row: Int) {
+        tableView.didSelect(at: row,section: optionsSection)
     }
     
     func optionView(at row: Int) -> UITableViewCell? {
@@ -84,6 +103,11 @@ private extension UITableView {
     func cell(at row: Int, section: Int = 0) -> UITableViewCell? {
         let index = IndexPath(row: row, section: section)
         return dataSource?.tableView(self, cellForRowAt: index)
+    }
+    
+    func didSelect(at row: Int,section: Int = 0) {
+        let index = IndexPath(row: row, section: section)
+        delegate?.tableView?(self, didSelectRowAt: index)
     }
 }
 
