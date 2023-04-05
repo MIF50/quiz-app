@@ -50,10 +50,10 @@ final class QuestionViewControllerTests: XCTestCase {
         var receivedAnswer = [String]()
         let sut = makeSUT(options: ["A1","A2"]) { receivedAnswer = $0 }
         
-        sut.simuateOptionSelection(at: 0)
+        sut.simuateOptionSelect(at: 0)
         XCTAssertEqual(receivedAnswer, ["A1"])
         
-        sut.simuateOptionSelection(at: 1)
+        sut.simuateOptionSelect(at: 1)
         XCTAssertEqual(receivedAnswer, ["A2"])
     }
     
@@ -62,11 +62,23 @@ final class QuestionViewControllerTests: XCTestCase {
         let sut = makeSUT(options: ["A1","A2"]) { receivedAnswer = $0 }
         sut.enableMultipleSelection()
         
-        sut.simuateOptionSelection(at: 0)
+        sut.simuateOptionSelect(at: 0)
         XCTAssertEqual(receivedAnswer, ["A1"])
         
-        sut.simuateOptionSelection(at: 1)
+        sut.simuateOptionSelect(at: 1)
         XCTAssertEqual(receivedAnswer, ["A1","A2"])
+    }
+    
+    func test_optionDeselected_withEnabledMultipleSelection_notifiesDelegate() {
+        var receivedAnswer = [String]()
+        let sut = makeSUT(options: ["A1","A2"]) { receivedAnswer = $0 }
+        sut.enableMultipleSelection()
+        
+        sut.simuateOptionSelect(at: 0)
+        XCTAssertEqual(receivedAnswer, ["A1"])
+        
+        sut.simuateOptionDeselect(at: 0)
+        XCTAssertEqual(receivedAnswer, [])
     }
     
     //MARK: - Helpers
@@ -93,8 +105,12 @@ private extension QuestionViewController {
         tableView.allowsMultipleSelection = true
     }
     
-    func simuateOptionSelection(at row: Int) {
-        tableView.didSelect(at: row,section: optionsSection)
+    func simuateOptionSelect(at row: Int) {
+        tableView.select(at: row,section: optionsSection)
+    }
+    
+    func simuateOptionDeselect(at row: Int) {
+        tableView.deselect(at: row,section: optionsSection)
     }
     
     func optionView(at row: Int) -> UITableViewCell? {
@@ -121,10 +137,16 @@ private extension UITableView {
         return dataSource?.tableView(self, cellForRowAt: index)
     }
     
-    func didSelect(at row: Int,section: Int = 0) {
+    func select(at row: Int,section: Int = 0) {
         let index = IndexPath(row: row, section: section)
         selectRow(at: index, animated: false, scrollPosition: .none)
         delegate?.tableView?(self, didSelectRowAt: index)
+    }
+    
+    func deselect(at row: Int,section: Int = 0) {
+        let index = IndexPath(row: row, section: section)
+        deselectRow(at: index, animated: false)
+        delegate?.tableView?(self, didDeselectRowAt: index)
     }
 }
 
