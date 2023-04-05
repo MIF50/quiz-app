@@ -23,22 +23,16 @@ final class ResultsViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.textHeader, "a summary")
     }
     
-    func test_viewDidLoad_withoutAnswers_doestNotRenderAnswers() {
-        let sut = makeSUT(answers: [])
-        
-        XCTAssertEqual(sut.numberOfAnswers, 0)
-    }
-    
     func test_tableView_delegate_shouldBeConnected() {
         let sut = makeSUT()
         
         XCTAssertNotNil(sut.tableView.dataSource,"dataSource")
     }
     
-    func test_viewDidLoad_withOneAnswer_rendersAnswer() {
-        let sut = makeSUT(answers: ["A1"])
-
-        XCTAssertEqual(sut.numberOfAnswers, 1)
+    func test_viewDidLoad_rendersAnswer() {
+        XCTAssertEqual(makeSUT(answers: []).numberOfAnswers, 0)
+        XCTAssertEqual(makeSUT(answers: [anyAnswer]).numberOfAnswers, 1)
+        XCTAssertEqual(makeSUT(answers: [anyAnswer,anyAnswer]).numberOfAnswers, 2)
     }
     
     //MARK: - Helpers
@@ -51,7 +45,10 @@ final class ResultsViewControllerTests: XCTestCase {
         sut.loadViewIfNeeded()
         return sut
     }
-
+    
+    var anyAnswer: String {
+        "any answer"
+    }
 }
 
 private extension ResultsViewController {
