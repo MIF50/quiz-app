@@ -43,6 +43,14 @@ final class ResultsViewControllerTests: XCTestCase {
         XCTAssertNotNil(cell)
     }
     
+    func test_viewDidLoad_withWrongAnswer_rendersWrongAnswerCell() {
+        let sut = makeSUT(answers: [.init(isCorrect: false)])
+        
+        let cell = sut.wrongAnswerView(at: 0)
+        
+        XCTAssertNotNil(cell)
+    }
+    
     //MARK: - Helpers
     
     private func makeSUT(
@@ -63,6 +71,10 @@ private extension ResultsViewController {
     
     var textHeader: String? {
         headerLabel.text
+    }
+    
+    func wrongAnswerView(at row: Int) -> WrongAnswerCell? {
+        return tableView.cell(at: 0,section: answerSection) as? WrongAnswerCell
     }
     
     func correctAnswerView(at row: Int) -> CorrectAnswerCell? {

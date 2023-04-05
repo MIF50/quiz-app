@@ -19,6 +19,10 @@ public class CorrectAnswerCell: UITableViewCell {
     
 }
 
+public class WrongAnswerCell: UITableViewCell {
+    
+}
+
 public final class ResultsViewController: UIViewController {
     
     //MARK: - Outlets
@@ -50,6 +54,7 @@ extension ResultsViewController: UITableViewDataSource {
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        CorrectAnswerCell()
+        let answer = answers[indexPath.row]
+        return answer.isCorrect ? CorrectAnswerCell() : WrongAnswerCell()
     }
 }
