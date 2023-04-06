@@ -8,14 +8,21 @@
 import UIKit
 
 public struct PresentableAnswer {
+    public let question: String
     public let isCorrect: Bool
     
-    public init(isCorrect: Bool) {
+    public init(question: String, isCorrect: Bool) {
+        self.question = question
         self.isCorrect = isCorrect
     }
 }
 
 public class CorrectAnswerCell: UITableViewCell {
+    
+    //MARK: - Outlets
+    
+    @IBOutlet private(set) public var questionLabel: UILabel!
+
     
 }
 
@@ -43,6 +50,7 @@ public final class ResultsViewController: UIViewController {
         super.viewDidLoad()
 
         headerLabel.text = summary
+        tableView.register(.init(nibName: "CorrectAnswerCell", bundle: nibBundle), forCellReuseIdentifier: "CorrectAnswerCell")
     }
 
 }
@@ -55,6 +63,11 @@ extension ResultsViewController: UITableViewDataSource {
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let answer = answers[indexPath.row]
-        return answer.isCorrect ? CorrectAnswerCell() : WrongAnswerCell()
+        if answer.isCorrect {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CorrectAnswerCell") as! CorrectAnswerCell
+            cell.questionLabel.text = answer.question
+            return cell
+        }
+        return WrongAnswerCell()
     }
 }
