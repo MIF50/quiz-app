@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = makeQuestionViewController()
+        window?.rootViewController = makeResultsViewController()
         
         window?.makeKeyAndVisible()
     }
@@ -28,6 +28,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         vc.tableView.allowsMultipleSelection = true
         return vc
     }
-
+    
+    private func makeResultsViewController() -> ResultsViewController {
+        let answers = [
+            PresentableAnswer(question: "Question 1?", answer: "correct", wrongAnswer: nil),
+            PresentableAnswer(question: "Question 2?", answer: "unknow", wrongAnswer: "wrong")
+        ]
+        let vc = ResultsViewController(summary: "You got 1/2", answers: answers)
+        vc.loadViewIfNeeded()
+        vc.tableView.allowsMultipleSelection = true
+        return vc
+    }
 }
 
