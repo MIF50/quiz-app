@@ -29,10 +29,16 @@ public class Flow<Question,Answer,R: Router> where R.Question == Question, R.Ans
     
     private let questions: [Question]
     private let router: R
+    private let scoring: ([Question: Answer]) -> Void
     
-    public init(questions: [Question], router: R) {
+    public init(
+        questions: [Question],
+        router: R,
+        scoring: @escaping ([Question: Answer]) -> Void
+    ){
         self.questions = questions
         self.router = router
+            self.scoring = scoring
     }
     
     public func start() {

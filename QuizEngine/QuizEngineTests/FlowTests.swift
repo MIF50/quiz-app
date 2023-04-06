@@ -104,11 +104,12 @@ final class FlowTests: XCTestCase {
     
     private func makeSUT(
         questions: [String] = [],
+        scoring: @escaping ([String: String]) -> Void = { _ in  },
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> (sut: SUT,router: RouterSpy) {
         let router = RouterSpy()
-        let sut = Flow(questions: questions,router: router)
+        let sut = Flow(questions: questions,router: router,scoring: scoring)
         trackForMemoryLeaks(router,file: file,line: line)
         trackForMemoryLeaks(sut,file: file,line: line)
         return (sut,router)
