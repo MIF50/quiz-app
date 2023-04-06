@@ -13,6 +13,7 @@
 		B53A320329DE1B36009C96CA /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53A320129DE1B36009C96CA /* ResultsViewController.xib */; };
 		B547E11D29DF4C8600BEF650 /* CorrectAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B547E11C29DF4C8600BEF650 /* CorrectAnswerCell.xib */; };
 		B547E11F29DF53D100BEF650 /* WrongAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B547E11E29DF53D100BEF650 /* WrongAnswerCell.xib */; };
+		B547E12129DF5C1F00BEF650 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547E12029DF5C1F00BEF650 /* UITableView+Ext.swift */; };
 		B5D6628429DCC3F0005C49F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D6628329DCC3F0005C49F2 /* AppDelegate.swift */; };
 		B5D6628629DCC3F0005C49F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5D6628529DCC3F0005C49F2 /* SceneDelegate.swift */; };
 		B5D6628D29DCC3F2005C49F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5D6628C29DCC3F2005C49F2 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		B53A320129DE1B36009C96CA /* ResultsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
 		B547E11C29DF4C8600BEF650 /* CorrectAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CorrectAnswerCell.xib; sourceTree = "<group>"; };
 		B547E11E29DF53D100BEF650 /* WrongAnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WrongAnswerCell.xib; sourceTree = "<group>"; };
+		B547E12029DF5C1F00BEF650 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		B5D6628029DCC3F0005C49F2 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5D6628329DCC3F0005C49F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B5D6628529DCC3F0005C49F2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				B53A320129DE1B36009C96CA /* ResultsViewController.xib */,
 				B547E11C29DF4C8600BEF650 /* CorrectAnswerCell.xib */,
 				B547E11E29DF53D100BEF650 /* WrongAnswerCell.xib */,
+				B547E12029DF5C1F00BEF650 /* UITableView+Ext.swift */,
 			);
 			path = QuizApp;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			files = (
 				B5D6628429DCC3F0005C49F2 /* AppDelegate.swift in Sources */,
 				B5D6628629DCC3F0005C49F2 /* SceneDelegate.swift in Sources */,
+				B547E12129DF5C1F00BEF650 /* UITableView+Ext.swift in Sources */,
 				B5D662A729DCC731005C49F2 /* QuestionViewController.swift in Sources */,
 				B53A320229DE1B36009C96CA /* ResultsViewController.swift in Sources */,
 			);
