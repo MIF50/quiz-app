@@ -7,22 +7,6 @@
 
 import UIKit
 
-public struct PresentableAnswer {
-    public let question: String
-    public let answer: String
-    public let wrongAnswer: String?
-    
-    public init(question: String, answer: String, wrongAnswer: String?) {
-        self.question = question
-        self.answer = answer
-        self.wrongAnswer = wrongAnswer
-    }
-    
-    var isCorrect: Bool {
-        wrongAnswer == nil
-    }
-}
-
 public class CorrectAnswerCell: UITableViewCell {
     
     //MARK: - Outlets
