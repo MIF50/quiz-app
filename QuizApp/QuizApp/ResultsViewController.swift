@@ -82,14 +82,14 @@ extension ResultsViewController: UITableViewDataSource {
     }
     
     private func correctAnswerCell(for answer: PresentableAnswer) -> CorrectAnswerCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CorrectAnswerCell") as! CorrectAnswerCell
+        let cell = tableView.dequeueReusableCell(CorrectAnswerCell.self)
         cell.questionLabel.text = answer.question
         cell.answerLabel.text = answer.answer
         return cell
     }
     
     private func wrongAnswerCell(for answer: PresentableAnswer) -> WrongAnswerCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WrongAnswerCell") as! WrongAnswerCell
+        let cell = tableView.dequeueReusableCell(WrongAnswerCell.self)
         cell.questionLabel.text = answer.question
         cell.correctAnswerLabel.text = answer.answer
         cell.wrongAnswerLabel.text = answer.wrongAnswer
@@ -102,5 +102,10 @@ extension UITableView {
     func register(_ type: UITableViewCell.Type) {
         let className = String(describing: type)
         register(.init(nibName: className, bundle: nil), forCellReuseIdentifier: className)
+    }
+    
+    func dequeueReusableCell<T>(_ type: T.Type) -> T {
+        let className = String(describing: type)
+        return dequeueReusableCell(withIdentifier: className) as! T
     }
 }
