@@ -11,13 +11,15 @@ public struct PresentableAnswer {
     public let question: String
     public let answer: String
     public let wrongAnswer: String?
-    public let isCorrect: Bool
     
-    public init(question: String, answer: String, wrongAnswer: String?, isCorrect: Bool) {
+    public init(question: String, answer: String, wrongAnswer: String?) {
         self.question = question
         self.answer = answer
         self.wrongAnswer = wrongAnswer
-        self.isCorrect = isCorrect
+    }
+    
+    var isCorrect: Bool {
+        wrongAnswer == nil
     }
 }
 
