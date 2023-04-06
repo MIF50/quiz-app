@@ -7,15 +7,6 @@
 
 import UIKit
 
-public class WrongAnswerCell: UITableViewCell {
-    
-    //MARK: - Outlets
-    
-    @IBOutlet private(set) public var questionLabel: UILabel!
-    @IBOutlet private(set) public var correctAnswerLabel: UILabel!
-    @IBOutlet private(set) public var wrongAnswerLabel: UILabel!
-}
-
 public final class ResultsViewController: UIViewController {
     
     //MARK: - Outlets
