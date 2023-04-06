@@ -61,8 +61,8 @@ public final class ResultsViewController: UIViewController {
         super.viewDidLoad()
 
         headerLabel.text = summary
-        tableView.register(.init(nibName: "CorrectAnswerCell", bundle: nibBundle), forCellReuseIdentifier: "CorrectAnswerCell")
-        tableView.register(.init(nibName: "WrongAnswerCell", bundle: nibBundle), forCellReuseIdentifier: "WrongAnswerCell")
+        tableView.register(CorrectAnswerCell.self)
+        tableView.register(WrongAnswerCell.self)
     }
 
 }
@@ -94,5 +94,13 @@ extension ResultsViewController: UITableViewDataSource {
         cell.correctAnswerLabel.text = answer.answer
         cell.wrongAnswerLabel.text = answer.wrongAnswer
         return cell
+    }
+}
+
+extension UITableView {
+    
+    func register(_ type: UITableViewCell.Type) {
+        let className = String(describing: type)
+        register(.init(nibName: className, bundle: nil), forCellReuseIdentifier: className)
     }
 }
