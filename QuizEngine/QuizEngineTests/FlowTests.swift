@@ -100,11 +100,13 @@ final class FlowTests: XCTestCase {
     
     //MARK: - Helper
     
+    private typealias SUT = Flow<String,String,RouterSpy>
+    
     private func makeSUT(
         questions: [String] = [],
         file: StaticString = #filePath,
         line: UInt = #line
-    ) -> (sut: Flow,router: RouterSpy) {
+    ) -> (sut: SUT,router: RouterSpy) {
         let router = RouterSpy()
         let sut = Flow(questions: questions,router: router)
         trackForMemoryLeaks(router,file: file,line: line)
@@ -115,9 +117,9 @@ final class FlowTests: XCTestCase {
     private class RouterSpy: Router {
         var routedQuestions = [String]()
         var routedResult: [String: String]? = nil
-        private var answers = [Router.AnswerCallback]()
+        private var answers = [(String) -> Void]()
         
-        func routeTo(question: String,answerCallback: @escaping Router.AnswerCallback) {
+        func routeTo(question: String,answerCallback: @escaping (String) -> Void) {
             routedQuestions.append(question)
             answers.append(answerCallback)
         }
