@@ -96,6 +96,16 @@ final class FlowTests: XCTestCase {
 
         XCTAssertEqual(router.routedResult?.answers, ["Q1":"A1","Q2":"A2"])
     }
+    
+    func test_startAndAnswerFirstAndSecondQuestion_withTwoQuestions_scores(){
+        let (sut, router) = makeSUT(questions: ["Q1","Q2"],scoring: { _ in 10 })
+
+        sut.start()
+        router.answer("A1",at: 0)
+        router.answer("A2",at: 1)
+
+        XCTAssertEqual(router.routedResult?.score, 10)
+    }
 
     
     //MARK: - Helper
@@ -104,7 +114,7 @@ final class FlowTests: XCTestCase {
     
     private func makeSUT(
         questions: [String] = [],
-        scoring: @escaping ([String: String]) -> Void = { _ in  },
+        scoring: @escaping ([String: String]) -> Int = { _ in 0 },
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> (sut: SUT,router: RouterSpy) {
@@ -131,7 +141,7 @@ final class FlowTests: XCTestCase {
             answers[index](answered)
         }
         
-        func routeTo(result: QuizEngine.Result<String, String>) {
+        func routeTo(result: Result<String, String>) {
             routedResult = result
         }
     }
