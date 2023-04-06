@@ -67,7 +67,7 @@ final class FlowTests: XCTestCase {
         
         sut.start()
         
-        XCTAssertEqual(router.routedResult,[:])
+        XCTAssertEqual(router.routedResult?.answers,[:])
     }
     
     func test_start_withOneQuestion_doesNotRouteToResult() {
@@ -94,7 +94,7 @@ final class FlowTests: XCTestCase {
         router.answer("A1",at: 0)
         router.answer("A2",at: 1)
 
-        XCTAssertEqual(router.routedResult, ["Q1":"A1","Q2":"A2"])
+        XCTAssertEqual(router.routedResult?.answers, ["Q1":"A1","Q2":"A2"])
     }
 
     
@@ -115,8 +115,10 @@ final class FlowTests: XCTestCase {
     }
     
     private class RouterSpy: Router {
+        
+        
         var routedQuestions = [String]()
-        var routedResult: [String: String]? = nil
+        var routedResult: Result<String,String>? = nil
         private var answers = [(String) -> Void]()
         
         func routeTo(question: String,answerCallback: @escaping (String) -> Void) {
@@ -128,7 +130,7 @@ final class FlowTests: XCTestCase {
             answers[index](answered)
         }
         
-        func routeTo(result: [String: String]) {
+        func routeTo(result: QuizEngine.Result<String, String>) {
             routedResult = result
         }
     }

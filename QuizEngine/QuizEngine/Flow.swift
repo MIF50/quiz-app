@@ -12,12 +12,20 @@ public protocol Router {
     associatedtype Answer
     
     func routeTo(question: Question,answerCallback: @escaping (Answer) -> Void)
-    func routeTo(result: [Question: Answer])
+    func routeTo(result: Result<Question, Answer>)
+}
+
+public struct Result<Question: Hashable,Answer> {
+    public let answers: [Question: Answer]
+    
+    public init(answers: [Question : Answer]) {
+        self.answers = answers
+    }
 }
 
 public class Flow<Question,Answer,R: Router> where R.Question == Question, R.Answer == Answer {
     
-    private var result: [Question: Answer] = [:]
+    private var answers: [Question: Answer] = [:]
     
     private let questions: [Question]
     private let router: R
@@ -31,7 +39,7 @@ public class Flow<Question,Answer,R: Router> where R.Question == Question, R.Ans
         if let firstQuestion = questions.first {
             router.routeTo(question: firstQuestion,answerCallback: nextCallback(firstQuestion))
         } else {
-            router.routeTo(result: result)
+            router.routeTo(result: result())
         }
     }
     
@@ -43,15 +51,19 @@ public class Flow<Question,Answer,R: Router> where R.Question == Question, R.Ans
     
     private func routeNext(_ question: Question ,_ answer: Answer) {
         if let currentQuestionIndex = questions.firstIndex(of: question) {
-            result[question] = answer
+            answers[question] = answer
             
             let nextQuestionIndex = currentQuestionIndex + 1
             if nextQuestionIndex < questions.count {
                 let nextQuestion = questions[nextQuestionIndex]
                 router.routeTo(question: nextQuestion,answerCallback: nextCallback(nextQuestion))
             } else {
-                router.routeTo(result: result)
+                router.routeTo(result: result())
             }
         }
+    }
+    
+    private func result() -> Result<Question,Answer> {
+        Result(answers: answers)
     }
 }
