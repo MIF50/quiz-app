@@ -16,21 +16,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="448" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUi-L3-pvp">
-                        <rect key="frame" x="20" y="12" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWs-hF-r0v">
-                        <rect key="frame" x="20" y="45" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" systemColor="systemGreenColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Dpn-CQ-dqy">
+                        <rect key="frame" x="20" y="11" width="408" height="88"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GUi-L3-pvp">
+                                <rect key="frame" x="0.0" y="0.0" width="408" height="20.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SWs-hF-r0v">
+                                <rect key="frame" x="0.0" y="32.333333333333343" width="408" height="55.666666666666657"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="Dpn-CQ-dqy" firstAttribute="top" secondItem="dvf-Bu-oDW" secondAttribute="topMargin" id="DLG-yE-HyS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Dpn-CQ-dqy" secondAttribute="bottom" id="K2m-KN-wHK"/>
+                    <constraint firstItem="Dpn-CQ-dqy" firstAttribute="leading" secondItem="dvf-Bu-oDW" secondAttribute="leadingMargin" id="Kef-OY-X6K"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Dpn-CQ-dqy" secondAttribute="trailing" id="ghZ-rm-v6Z"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="answerLabel" destination="SWs-hF-r0v" id="Jjy-Cb-T7E"/>
