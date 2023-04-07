@@ -15,16 +15,6 @@ public protocol Router {
     func routeTo(result: Result<Question, Answer>)
 }
 
-public struct Result<Question: Hashable,Answer> {
-    public let answers: [Question: Answer]
-    public let score: Int
-    
-    public init(answers: [Question : Answer],score: Int) {
-        self.answers = answers
-        self.score = score
-    }
-}
-
 public class Flow<Question,Answer,R: Router> where R.Question == Question, R.Answer == Answer {
     
     private var answers: [Question: Answer] = [:]

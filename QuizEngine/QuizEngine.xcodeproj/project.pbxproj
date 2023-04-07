@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B547E12929DF9D5500BEF650 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547E12829DF9D5500BEF650 /* Result.swift */; };
 		B55C91BF29DB2DBA0088AACA /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55C91B629DB2DBA0088AACA /* QuizEngine.framework */; };
 		B55C91CF29DB31430088AACA /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91CE29DB31430088AACA /* FlowTests.swift */; };
 		B55C91D129DB32430088AACA /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91D029DB32430088AACA /* Flow.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B547E12829DF9D5500BEF650 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B55C91B629DB2DBA0088AACA /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55C91BE29DB2DBA0088AACA /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55C91CE29DB31430088AACA /* FlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTests.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				B55C91D029DB32430088AACA /* Flow.swift */,
+				B547E12829DF9D5500BEF650 /* Result.swift */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B547E12929DF9D5500BEF650 /* Result.swift in Sources */,
 				B55C91D129DB32430088AACA /* Flow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
