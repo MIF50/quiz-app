@@ -19,5 +19,16 @@ final class NavigationControllerRouterTests: XCTestCase {
         
         XCTAssertEqual(naviagtionController.viewControllers.count, 1)
     }
+    
+    func test_routeToQuestionTwice_presentsQuestionControllerTwice() {
+        let naviagtionController = UINavigationController()
+        let sut = NavigationControllerRouter(naviagtionController)
+        
+        sut.routeTo(question: "Q1", answerCallback: { _ in })
+        sut.routeTo(question: "Q2", answerCallback: { _ in })
+
+        
+        XCTAssertEqual(naviagtionController.viewControllers.count, 2)
+    }
 }
 
