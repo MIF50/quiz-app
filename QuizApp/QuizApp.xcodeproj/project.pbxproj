@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B520CC1A29E05DB2005647EB /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B520CC1929E05DB2005647EB /* QuizEngine.framework */; };
 		B532576E29DE427F004296E0 /* XCTestCase+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B532576D29DE427F004296E0 /* XCTestCase+UITableView.swift */; };
 		B53A31FF29DE1AD9009C96CA /* ResultsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A31FE29DE1AD9009C96CA /* ResultsViewControllerTests.swift */; };
 		B53A320229DE1B36009C96CA /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53A320029DE1B36009C96CA /* ResultsViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B520CC1929E05DB2005647EB /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B532576D29DE427F004296E0 /* XCTestCase+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+UITableView.swift"; sourceTree = "<group>"; };
 		B53A31FE29DE1AD9009C96CA /* ResultsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewControllerTests.swift; sourceTree = "<group>"; };
 		B53A320029DE1B36009C96CA /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B520CC1A29E05DB2005647EB /* QuizEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B520CC1829E05DB2005647EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B520CC1929E05DB2005647EB /* QuizEngine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B532576C29DE425E004296E0 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +102,7 @@
 				B5D6628229DCC3F0005C49F2 /* QuizApp */,
 				B5D6629C29DCC53F005C49F2 /* QuizAppTests */,
 				B5D6628129DCC3F0005C49F2 /* Products */,
+				B520CC1829E05DB2005647EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
