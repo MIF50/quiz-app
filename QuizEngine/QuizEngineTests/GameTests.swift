@@ -38,6 +38,18 @@ final class GameTests: XCTestCase {
         
         XCTAssertEqual(router.routedResult!.score, 1)
     }
- 
+    
+    func test_startGame_answerTwoOutOfTwoCorrectly_scoresTwo() {
+        game = startGame(
+            questions: ["Q1","Q2"],
+            router: router,
+            correctAnswers: ["Q1": "A1","Q2": "A2"]
+        )
+        
+        router.answer("A1",at: 0)
+        router.answer("A2",at: 1)
+        
+        XCTAssertEqual(router.routedResult!.score, 2)
+    }
 }
 
