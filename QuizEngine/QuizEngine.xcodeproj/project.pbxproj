@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		B547E12929DF9D5500BEF650 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547E12829DF9D5500BEF650 /* Result.swift */; };
 		B547E12B29DF9D8900BEF650 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547E12A29DF9D8900BEF650 /* Router.swift */; };
+		B547E12D29DFA2D200BEF650 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547E12C29DFA2D200BEF650 /* GameTests.swift */; };
+		B547E12F29DFA39400BEF650 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547E12E29DFA39400BEF650 /* Game.swift */; };
+		B547E13129DFA45700BEF650 /* RouterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B547E13029DFA45700BEF650 /* RouterSpy.swift */; };
 		B55C91BF29DB2DBA0088AACA /* QuizEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B55C91B629DB2DBA0088AACA /* QuizEngine.framework */; };
 		B55C91CF29DB31430088AACA /* FlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91CE29DB31430088AACA /* FlowTests.swift */; };
 		B55C91D129DB32430088AACA /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55C91D029DB32430088AACA /* Flow.swift */; };
@@ -28,6 +31,9 @@
 /* Begin PBXFileReference section */
 		B547E12829DF9D5500BEF650 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		B547E12A29DF9D8900BEF650 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B547E12C29DFA2D200BEF650 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
+		B547E12E29DFA39400BEF650 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		B547E13029DFA45700BEF650 /* RouterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterSpy.swift; sourceTree = "<group>"; };
 		B55C91B629DB2DBA0088AACA /* QuizEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = QuizEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55C91BE29DB2DBA0088AACA /* QuizEngineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuizEngineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B55C91CE29DB31430088AACA /* FlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTests.swift; sourceTree = "<group>"; };
@@ -78,6 +84,7 @@
 				B55C91D029DB32430088AACA /* Flow.swift */,
 				B547E12829DF9D5500BEF650 /* Result.swift */,
 				B547E12A29DF9D8900BEF650 /* Router.swift */,
+				B547E12E29DFA39400BEF650 /* Game.swift */,
 			);
 			path = QuizEngine;
 			sourceTree = "<group>";
@@ -87,6 +94,7 @@
 			children = (
 				B55C91D229DB69C10088AACA /* Helpers */,
 				B55C91CE29DB31430088AACA /* FlowTests.swift */,
+				B547E12C29DFA2D200BEF650 /* GameTests.swift */,
 			);
 			path = QuizEngineTests;
 			sourceTree = "<group>";
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				B55C91D329DB69FC0088AACA /* XCTestCase+MemoryLeakTracking.swift */,
+				B547E13029DFA45700BEF650 /* RouterSpy.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -212,6 +221,7 @@
 				B547E12929DF9D5500BEF650 /* Result.swift in Sources */,
 				B547E12B29DF9D8900BEF650 /* Router.swift in Sources */,
 				B55C91D129DB32430088AACA /* Flow.swift in Sources */,
+				B547E12F29DFA39400BEF650 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B55C91CF29DB31430088AACA /* FlowTests.swift in Sources */,
+				B547E12D29DFA2D200BEF650 /* GameTests.swift in Sources */,
 				B55C91D429DB69FC0088AACA /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				B547E13129DFA45700BEF650 /* RouterSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
