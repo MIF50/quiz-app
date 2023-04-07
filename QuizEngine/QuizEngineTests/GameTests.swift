@@ -11,15 +11,18 @@ import QuizEngine
 final class GameTests: XCTestCase {
     
     let router = RouterSpy()
-    var game: Game<String,String,RouterSpy>!
-    
-    func test_startGame_answerZeroOutOfTwoCorrectly_scoresZero() {
-        game = startGame(
+    var sut: SUT!
+
+    override func setUp() {
+        super.setUp()
+        sut = startGame(
             questions: ["Q1","Q2"],
             router: router,
             correctAnswers: ["Q1": "A1","Q2": "A2"]
         )
-        
+    }
+    
+    func test_startGame_answerZeroOutOfTwoCorrectly_scoresZero() {
         router.answer("wrong",at: 0)
         router.answer("wrong",at: 1)
         
@@ -27,12 +30,6 @@ final class GameTests: XCTestCase {
     }
     
     func test_startGame_answerOneOutOfTwoCorrectly_scoresOne() {
-        game = startGame(
-            questions: ["Q1","Q2"],
-            router: router,
-            correctAnswers: ["Q1": "A1","Q2": "A2"]
-        )
-        
         router.answer("A1",at: 0)
         router.answer("wrong",at: 1)
         
@@ -40,16 +37,14 @@ final class GameTests: XCTestCase {
     }
     
     func test_startGame_answerTwoOutOfTwoCorrectly_scoresTwo() {
-        game = startGame(
-            questions: ["Q1","Q2"],
-            router: router,
-            correctAnswers: ["Q1": "A1","Q2": "A2"]
-        )
-        
         router.answer("A1",at: 0)
         router.answer("A2",at: 1)
         
         XCTAssertEqual(router.routedResult!.score, 2)
     }
+    
+    //MARK: - Helpers
+    
+    typealias SUT = Game<String,String,RouterSpy>
 }
 
