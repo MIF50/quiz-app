@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class Flow<Question,Answer,R: Router> where R.Question == Question, R.Answer == Answer {
+class Flow<Question,Answer,R: Router> where R.Question == Question, R.Answer == Answer {
     
     private var answers: [Question: Answer] = [:]
     
@@ -25,7 +25,7 @@ public class Flow<Question,Answer,R: Router> where R.Question == Question, R.Ans
             self.scoring = scoring
     }
     
-    public func start() {
+    func start() {
         if let firstQuestion = questions.first {
             router.routeTo(question: firstQuestion,answerCallback: nextCallback(firstQuestion))
         } else {

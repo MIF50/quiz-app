@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import QuizEngine
+@testable import QuizEngine
 
 final class FlowTests: XCTestCase {
 
