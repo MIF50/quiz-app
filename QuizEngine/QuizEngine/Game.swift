@@ -27,9 +27,10 @@ public func startGame<Question: Hashable,Answer: Equatable,R: Router>(
 }
 
 private func scoring<Question : Hashable,Answer: Equatable>(
-    _ answers: [Question: Answer], correctAnswer: [Question: Answer]
+    _ answers: [Question: Answer],
+    correctAnswer: [Question: Answer]
 ) -> Int {
-    answers.reduce(0) { scrore, tuple in
-        scrore + ( correctAnswer[tuple.key] == tuple.value ? 1 : 0 )
+    answers.reduce(0) { score, tuple in
+        score + ( correctAnswer[tuple.key] == tuple.value ? 1 : 0 )
     }
 }
