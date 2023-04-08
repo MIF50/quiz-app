@@ -24,7 +24,7 @@ final class NavigationControllerRouterTests: XCTestCase {
         XCTAssertEqual(naviagtionController.viewControllers.first, viewController)
     }
     
-    func test_routeToSeconQuestion_presentsQuestionController() {
+    func test_routeToSecondQuestion_presentsQuestionController() {
         let viewController = UIViewController()
         let secondViewController = UIViewController()
         let factory = ViewControllerFactoryStub()
