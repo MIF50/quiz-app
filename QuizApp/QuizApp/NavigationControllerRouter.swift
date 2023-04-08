@@ -9,7 +9,7 @@ import UIKit
 import QuizEngine
 
 protocol ViewControllerFactory {
-    func questionViewController(question: String,answerCallback: @escaping (String) -> Void) -> UIViewController
+    func questionViewController(question: Question<String>,answerCallback: @escaping (String) -> Void) -> UIViewController
 }
 
 class NavigationControllerRouter: Router {
@@ -22,12 +22,12 @@ class NavigationControllerRouter: Router {
         self.factory = factory
     }
     
-    func routeTo(question: String,answerCallback: @escaping (String) -> Void) {
+    func routeTo(question: Question<String>, answerCallback: @escaping (String) -> Void) {
         let viewController = factory.questionViewController(question: question, answerCallback: answerCallback)
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func routeTo(result: Result<String, String>) {
+    func routeTo(result: Result<Question<String>, String>) {
         
     }
 }
