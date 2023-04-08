@@ -17,7 +17,7 @@ public final class QuestionViewController: UIViewController {
     @IBOutlet public private(set) var tableView: UITableView!
     
     private var question = ""
-    private var options = [String]()
+    private(set) var options = [String]()
     private var selection: (([String]) -> Void)? = nil
     
     public convenience init(
