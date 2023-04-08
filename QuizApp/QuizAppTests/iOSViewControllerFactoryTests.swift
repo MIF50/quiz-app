@@ -40,6 +40,36 @@ class iOSViewControllerFactoryTests: XCTestCase {
         XCTAssertEqual(controller.tableView.allowsMultipleSelection, false)
     }
     
+    func test_questionViewController_multipleAnswer_createsControllerWithQuestion() {
+        let options = ["A1"]
+        let question = Question.multipleAnswer("Q1")
+        let sut = makeSUT(question: question, options: options)
+        
+        let controller = makeQuestionController(sut: sut, question: question)
+        
+        XCTAssertEqual(controller.question,"Q1")
+    }
+    
+    func test_questionViewController_mutlipleAnswer_createsControllerWithOptions() {
+        let options = ["A1"]
+        let question = Question.multipleAnswer("Q1")
+        let sut = makeSUT(question: question, options: options)
+        
+        let controller = makeQuestionController(sut: sut, question: question)
+        
+        XCTAssertEqual(controller.options,options)
+    }
+    
+    func test_questionViewController_multipleAnswer_createsControllerWithMultipleSelection() {
+        let options = ["A1"]
+        let question = Question.multipleAnswer("Q1")
+        let sut = makeSUT(question: question, options: options)
+        
+        let controller = makeQuestionController(sut: sut, question: question)
+        
+        XCTAssertEqual(controller.tableView.allowsMultipleSelection, true)
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(
