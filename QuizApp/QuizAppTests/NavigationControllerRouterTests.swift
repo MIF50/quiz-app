@@ -14,28 +14,21 @@ final class NavigationControllerRouterTests: XCTestCase {
     func test_routeToQuestion_showsQuestionController() {
         let viewController = UIViewController()
         let secondViewController = UIViewController()
-        let factory = ViewControllerFactoryStub()
+        let navigationController = UINavigationController()
+        let (sut, factory) = makeSUT(naviagtionController: navigationController)
         factory.stub(question: "Q1",with: viewController)
         factory.stub(question: "Q2",with: secondViewController)
-
-        let naviagtionController = UINavigationController()
-        let sut = NavigationControllerRouter(naviagtionController,factory: factory)
         
         sut.routeTo(question: "Q1", answerCallback: { _ in })
         sut.routeTo(question: "Q2", answerCallback: { _ in })
         
-        XCTAssertEqual(naviagtionController.viewControllers.count, 2)
-        XCTAssertEqual(naviagtionController.viewControllers.first, viewController)
-        XCTAssertEqual(naviagtionController.viewControllers.last, secondViewController)
+        XCTAssertEqual(navigationController.viewControllers.count, 2)
+        XCTAssertEqual(navigationController.viewControllers.first, viewController)
+        XCTAssertEqual(navigationController.viewControllers.last, secondViewController)
     }
     
     func test_routeToSecondQuestion_presentsQuestionControllerWithRightCallback() {
-        let viewController = UIViewController()
-        let factory = ViewControllerFactoryStub()
-        factory.stub(question: "Q1",with: viewController)
-
-        let naviagtionController = UINavigationController()
-        let sut = NavigationControllerRouter(naviagtionController,factory: factory)
+        let (sut, factory) = makeSUT()
         
         var firedCallback = false
         sut.routeTo(question: "Q1", answerCallback: { _ in
@@ -47,6 +40,15 @@ final class NavigationControllerRouterTests: XCTestCase {
     }
     
     // MARK: - Helpers
+    
+    private func makeSUT(
+        naviagtionController: UINavigationController = UINavigationController()
+    ) -> (sut: NavigationControllerRouter,factory: ViewControllerFactoryStub) {
+        let factory = ViewControllerFactoryStub()
+        let sut = NavigationControllerRouter(naviagtionController,factory: factory)
+        return (sut, factory)
+    }
+
     
     private class ViewControllerFactoryStub: ViewControllerFactory {
         
@@ -62,7 +64,7 @@ final class NavigationControllerRouterTests: XCTestCase {
             answerCallback: @escaping (String) -> Void
         ) -> UIViewController {
             self.answerCallback[question] = answerCallback
-            return stubbedQuestions[question]!
+            return stubbedQuestions[question] ?? UIViewController()
         }
         
         func answer(_ question: String,answer: String) {
