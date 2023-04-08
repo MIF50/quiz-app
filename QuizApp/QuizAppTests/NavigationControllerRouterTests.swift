@@ -11,20 +11,7 @@ import UIKit
 
 final class NavigationControllerRouterTests: XCTestCase {
     
-    func test_routeToQuestion_presentsQuestionController() {
-        let viewController = UIViewController()
-        let factory = ViewControllerFactoryStub()
-        factory.stub(question: "Q1",with: viewController)
-        let naviagtionController = UINavigationController()
-        let sut = NavigationControllerRouter(naviagtionController,factory: factory)
-        
-        sut.routeTo(question: "Q1", answerCallback: { _ in })
-        
-        XCTAssertEqual(naviagtionController.viewControllers.count, 1)
-        XCTAssertEqual(naviagtionController.viewControllers.first, viewController)
-    }
-    
-    func test_routeToSecondQuestion_presentsQuestionController() {
+    func test_routeToQuestion_showsQuestionController() {
         let viewController = UIViewController()
         let secondViewController = UIViewController()
         let factory = ViewControllerFactoryStub()
