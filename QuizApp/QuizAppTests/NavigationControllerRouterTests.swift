@@ -14,7 +14,7 @@ final class NavigationControllerRouterTests: XCTestCase {
     func test_routeToQuestion_showsQuestionController() {
         let viewController = UIViewController()
         let secondViewController = UIViewController()
-        let navigationController = UINavigationController()
+        let navigationController = NonAnimationNavigationController()
         let (sut, factory) = makeSUT(naviagtionController: navigationController)
         factory.stub(question: "Q1",with: viewController)
         factory.stub(question: "Q2",with: secondViewController)
@@ -48,7 +48,13 @@ final class NavigationControllerRouterTests: XCTestCase {
         let sut = NavigationControllerRouter(naviagtionController,factory: factory)
         return (sut, factory)
     }
-
+    
+    private class NonAnimationNavigationController: UINavigationController {
+        
+        override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+            super.pushViewController(viewController, animated: false)
+        }
+    }
     
     private class ViewControllerFactoryStub: ViewControllerFactory {
         
