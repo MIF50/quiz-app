@@ -16,7 +16,7 @@ public final class QuestionViewController: UIViewController {
     @IBOutlet public private(set) var headerLabel: UILabel!
     @IBOutlet public private(set) var tableView: UITableView!
     
-    private var question = ""
+    private(set) var question = ""
     private(set) var options = [String]()
     private var selection: (([String]) -> Void)? = nil
     

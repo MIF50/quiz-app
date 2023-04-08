@@ -10,14 +10,14 @@ import XCTest
 
 class iOSViewControllerFactoryTests: XCTestCase {
 
-    func test_questionViewController_createsController() {
+    func test_questionViewController_createsControllerWithQuestion() {
         let options = ["A1"]
         let question = Question.singleAnswer("Q1")
         let sut = iOSViewControllerFactory(options: [question: options])
         
         let controller = sut.questionViewController(question: Question.singleAnswer("Q1"),answerCallback: { _ in }) as? QuestionViewController
 
-        XCTAssertNotNil(controller)
+        XCTAssertEqual(controller?.question,"Q1")
     }
     
     func test_questionViewController_createsControllerWithOptions() {
