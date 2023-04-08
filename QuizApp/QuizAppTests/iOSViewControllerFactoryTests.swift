@@ -29,4 +29,15 @@ class iOSViewControllerFactoryTests: XCTestCase {
 
         XCTAssertEqual(controller?.options,options)
     }
+    
+    func test_questionViewController_singleAnswer_createsControllerWithSingleSelection() {
+        let options = ["A1"]
+        let question = Question.singleAnswer("Q1")
+        let sut = iOSViewControllerFactory(options: [question: options])
+        
+        let controller = sut.questionViewController(question: Question.singleAnswer("Q1"),answerCallback: { _ in }) as? QuestionViewController
+        controller?.loadViewIfNeeded()
+        
+        XCTAssertEqual(controller?.tableView.allowsMultipleSelection, false)
+    }
 }
