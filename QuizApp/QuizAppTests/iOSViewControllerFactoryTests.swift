@@ -10,7 +10,7 @@ import XCTest
 
 class iOSViewControllerFactoryTests: XCTestCase {
 
-    func test_questionViewController_createsControllerWithQuestion() {
+    func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
         let options = ["A1"]
         let question = Question.singleAnswer("Q1")
         let sut = iOSViewControllerFactory(options: [question: options])
@@ -20,7 +20,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
         XCTAssertEqual(controller?.question,"Q1")
     }
     
-    func test_questionViewController_createsControllerWithOptions() {
+    func test_questionViewController_singleAnswer_createsControllerWithOptions() {
         let options = ["A1"]
         let question = Question.singleAnswer("Q1")
         let sut = iOSViewControllerFactory(options: [question: options])
