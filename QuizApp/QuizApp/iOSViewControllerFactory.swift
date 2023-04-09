@@ -21,6 +21,14 @@ class iOSViewControllerFactory: ViewControllerFactory {
             fatalError("Couldn't options for question \(question)")
         }
         
+        return questionViewController(for: question, options: options, answerCallback: answerCallback)
+    }
+    
+    private func questionViewController(
+        for question: Question<String>,
+        options: [String],
+        answerCallback: @escaping ([String]) -> Void
+    ) -> QuestionViewController{
         switch question {
         case let .singleAnswer(value):
             return QuestionViewController(question: value, options: options,selection: answerCallback)
