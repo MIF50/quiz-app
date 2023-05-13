@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "E5A896C1-1C24-465E-AF23-697DAA54ECAB",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:QuizEngine.xcodeproj",
+        "identifier" : "B55C91BD29DB2DBA0088AACA",
+        "name" : "QuizEngineTests"
+      }
+    }
+  ],
+  "version" : 1
+}
