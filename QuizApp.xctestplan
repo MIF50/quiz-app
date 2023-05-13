@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "556D99EF-50D6-4E00-A4B6-ACC2B2525F15",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:QuizApp.xcodeproj",
+      "identifier" : "B5D6627F29DCC3F0005C49F2",
+      "name" : "QuizApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:QuizApp.xcodeproj",
+        "identifier" : "B5D6629A29DCC53E005C49F2",
+        "name" : "QuizAppTests"
+      }
+    }
+  ],
+  "version" : 1
+}

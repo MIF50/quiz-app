@@ -10,4 +10,7 @@
    <FileRef
       location = "group:../QuizEngine.xctestplan">
    </FileRef>
+   <FileRef
+      location = "group:../QuizApp.xctestplan">
+   </FileRef>
 </Workspace>
