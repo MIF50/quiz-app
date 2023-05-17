@@ -10,71 +10,76 @@ import XCTest
 
 class iOSViewControllerFactoryTests: XCTestCase {
     
+    let singleAnswerQuestion = Question.singleAnswer("Q1")
+    let multipleAnswerQuestion = Question.multipleAnswer("Q2")
+
+    
     func test_questionViewController_singleAnswer_createsControllerWithTitle() {
-        let question = Question.singleAnswer("Q1")
-        let sut = makeSUT(question: question, options: [])
+        let sut = makeSUT(question: singleAnswerQuestion, options: [])
+        let presenter = QuestionPresenter(questions: [singleAnswerQuestion,multipleAnswerQuestion], question: singleAnswerQuestion)
+        let controller = makeQuestionController(sut: sut, question: singleAnswerQuestion)
         
-        let controller = makeQuestionController(sut: sut, question: question)
-        
-        XCTAssertEqual(controller.title,"Question #1")
+        XCTAssertEqual(controller.title,presenter.title)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithQuestion() {
         let options = ["A1"]
-        let question = Question.singleAnswer("Q1")
-        let sut = makeSUT(question: question, options: options)
+        let sut = makeSUT(question: singleAnswerQuestion, options: options)
         
-        let controller = makeQuestionController(sut: sut, question: question)
+        let controller = makeQuestionController(sut: sut, question: singleAnswerQuestion)
         
         XCTAssertEqual(controller.question,"Q1")
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithOptions() {
         let options = ["A1"]
-        let question = Question.singleAnswer("Q1")
-        let sut = makeSUT(question: question, options: options)
+        let sut = makeSUT(question: singleAnswerQuestion, options: options)
         
-        let controller = makeQuestionController(sut: sut, question: question)
+        let controller = makeQuestionController(sut: sut, question: singleAnswerQuestion)
         
         XCTAssertEqual(controller.options,options)
     }
     
     func test_questionViewController_singleAnswer_createsControllerWithSingleSelection() {
         let options = ["A1"]
-        let question = Question.singleAnswer("Q1")
-        let sut = makeSUT(question: question, options: options)
+        let sut = makeSUT(question: singleAnswerQuestion, options: options)
         
-        let controller = makeQuestionController(sut: sut, question: question)
+        let controller = makeQuestionController(sut: sut, question: singleAnswerQuestion)
         
         XCTAssertEqual(controller.tableView.allowsMultipleSelection, false)
     }
     
+    func test_questionViewController_multipleAnswer_createsControllerWithTitle() {
+        let sut = makeSUT(question: multipleAnswerQuestion, options: [])
+        let presenter = QuestionPresenter(questions: [singleAnswerQuestion,multipleAnswerQuestion], question: multipleAnswerQuestion)
+        let controller = makeQuestionController(sut: sut, question: multipleAnswerQuestion)
+        
+        XCTAssertEqual(controller.title,presenter.title)
+    }
+    
     func test_questionViewController_multipleAnswer_createsControllerWithQuestion() {
         let options = ["A1"]
-        let question = Question.multipleAnswer("Q1")
-        let sut = makeSUT(question: question, options: options)
+        let sut = makeSUT(question: multipleAnswerQuestion, options: options)
         
-        let controller = makeQuestionController(sut: sut, question: question)
+        let controller = makeQuestionController(sut: sut, question: multipleAnswerQuestion)
         
-        XCTAssertEqual(controller.question,"Q1")
+        XCTAssertEqual(controller.question,"Q2")
     }
     
     func test_questionViewController_mutlipleAnswer_createsControllerWithOptions() {
         let options = ["A1"]
-        let question = Question.multipleAnswer("Q1")
-        let sut = makeSUT(question: question, options: options)
+        let sut = makeSUT(question: multipleAnswerQuestion, options: options)
         
-        let controller = makeQuestionController(sut: sut, question: question)
+        let controller = makeQuestionController(sut: sut, question: multipleAnswerQuestion)
         
         XCTAssertEqual(controller.options,options)
     }
     
     func test_questionViewController_multipleAnswer_createsControllerWithMultipleSelection() {
         let options = ["A1"]
-        let question = Question.multipleAnswer("Q1")
-        let sut = makeSUT(question: question, options: options)
+        let sut = makeSUT(question: multipleAnswerQuestion, options: options)
         
-        let controller = makeQuestionController(sut: sut, question: question)
+        let controller = makeQuestionController(sut: sut, question: multipleAnswerQuestion)
         
         XCTAssertEqual(controller.tableView.allowsMultipleSelection, true)
     }
@@ -85,7 +90,7 @@ class iOSViewControllerFactoryTests: XCTestCase {
         question: Question<String>,
         options: [String]
     ) -> iOSViewControllerFactory {
-        return iOSViewControllerFactory(options: [question: options])
+        return iOSViewControllerFactory(questions: [singleAnswerQuestion,multipleAnswerQuestion],options: [question: options])
     }
     
     private func makeQuestionController(
