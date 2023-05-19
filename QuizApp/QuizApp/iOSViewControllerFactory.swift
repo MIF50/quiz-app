@@ -33,13 +33,21 @@ class iOSViewControllerFactory: ViewControllerFactory {
     ) -> QuestionViewController{
         switch question {
         case let .singleAnswer(value):
-            return questionController(for: question,value: value, options: options, answerCallback: answerCallback)
+            return questionController(
+                for: question,
+                value: value,
+                options: options,
+                answerCallback: answerCallback,
+                allowsMultipleSelection: false
+            )
         case let .multipleAnswer(value):
-            let viewController = questionController(for: question,value: value, options: options, answerCallback: answerCallback)
-
-            viewController.loadViewIfNeeded()
-            viewController.tableView.allowsMultipleSelection = true
-            return viewController
+            return questionController(
+                for: question,
+                value: value,
+                options: options,
+                answerCallback: answerCallback,
+                allowsMultipleSelection: true
+            )
         }
     }
     
@@ -47,10 +55,16 @@ class iOSViewControllerFactory: ViewControllerFactory {
         for question: Question<String>,
         value: String,
         options: [String],
-        answerCallback: @escaping ([String]) -> Void
+        answerCallback: @escaping ([String]) -> Void,
+        allowsMultipleSelection: Bool
     ) -> QuestionViewController {
-        let presenter = QuestionPresenter(questions: questions, question: question)
-        let controller = QuestionViewController(question: value, options: options,selection: answerCallback)
+        let presenter = QuestionPresenter(questions: questions,question: question)
+        let controller = QuestionViewController(
+            question: value,
+            options: options,
+            selection: answerCallback,
+            allowsMultipleSelection: allowsMultipleSelection
+        )
         controller.title = presenter.title
         return controller
     }

@@ -23,9 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func makeQuestionViewController() -> QuestionViewController {
         let vc = QuestionViewController(question: "A Question?", options: ["Option 1","Option 2","Option 3"], selection: {
             print($0)
-        })
+        },allowsMultipleSelection: true)
         vc.loadViewIfNeeded()
-        vc.tableView.allowsMultipleSelection = true
         return vc
     }
     

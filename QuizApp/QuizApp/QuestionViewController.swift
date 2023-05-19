@@ -19,21 +19,25 @@ public final class QuestionViewController: UIViewController {
     private(set) var question = ""
     private(set) var options = [String]()
     private var selection: (([String]) -> Void)? = nil
+    private(set) var allowsMultipleSelection = false
     
     public convenience init(
         question: String,
         options: [String],
-        selection: @escaping ([String]) -> Void
+        selection: @escaping ([String]) -> Void,
+        allowsMultipleSelection: Bool
     ) {
         self.init()
         self.question = question
         self.options = options
         self.selection = selection
+        self.allowsMultipleSelection = allowsMultipleSelection
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.allowsMultipleSelection = allowsMultipleSelection
         headerLabel.text = question
     }
 }
